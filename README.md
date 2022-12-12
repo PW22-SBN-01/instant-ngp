@@ -1,3 +1,59 @@
+# Notes
+
+## Evaluation script
+Use th `./scripts/eval.sh` script to run evaluation on all combinations
+
+```bash
+./scripts/eval.sh 
+instant-ngp_test_mono 2
+     d1,      d2,      d3,  AbsRel,   SqRel,    RMSE, RMSElog,   SILog,   log10
+  0.085,   0.200,   0.313,   0.798,   0.192,   0.268,   3.969, 281.072,   1.338
+instant-ngp_test_mono 4
+     d1,      d2,      d3,  AbsRel,   SqRel,    RMSE, RMSElog,   SILog,   log10
+  0.429,   0.678,   0.879,   0.294,   0.045,   0.152,   0.437,  37.893,   0.149
+instant-ngp_test_mono 8
+     d1,      d2,      d3,  AbsRel,   SqRel,    RMSE, RMSElog,   SILog,   log10
+  0.289,   0.546,   0.825,   0.440,   0.065,   0.152,   0.495,  49.243,   0.182
+instant-ngp_test_mono 16
+     d1,      d2,      d3,  AbsRel,   SqRel,    RMSE, RMSElog,   SILog,   log10
+  0.339,   0.658,   0.894,   0.376,   0.048,   0.139,   0.425,  42.528,   0.155
+instant-ngp_test_stereo 2
+     d1,      d2,      d3,  AbsRel,   SqRel,    RMSE, RMSElog,   SILog,   log10
+  0.096,   0.209,   0.361,   0.778,   0.182,   0.257,   3.731, 278.899,   1.207
+instant-ngp_test_stereo 4
+     d1,      d2,      d3,  AbsRel,   SqRel,    RMSE, RMSElog,   SILog,   log10
+  0.258,   0.603,   0.895,   0.316,   0.047,   0.153,   0.450,  30.459,   0.168
+instant-ngp_test_stereo 8
+     d1,      d2,      d3,  AbsRel,   SqRel,    RMSE, RMSElog,   SILog,   log10
+  0.290,   0.675,   0.912,   0.293,   0.042,   0.145,   0.426,  27.015,   0.158
+instant-ngp_test_stereo 16
+     d1,      d2,      d3,  AbsRel,   SqRel,    RMSE, RMSElog,   SILog,   log10
+  0.301,   0.709,   0.930,   0.291,   0.039,   0.139,   0.406,  29.908,   0.152
+instant-ngp_test_quad 2
+     d1,      d2,      d3,  AbsRel,   SqRel,    RMSE, RMSElog,   SILog,   log10
+  0.102,   0.224,   0.376,   0.755,   0.176,   0.255,   3.728, 277.829,   1.201
+instant-ngp_test_quad 4
+     d1,      d2,      d3,  AbsRel,   SqRel,    RMSE, RMSElog,   SILog,   log10
+  0.260,   0.594,   0.901,   0.314,   0.046,   0.152,   0.450,  29.578,   0.168
+instant-ngp_test_quad 8
+     d1,      d2,      d3,  AbsRel,   SqRel,    RMSE, RMSElog,   SILog,   log10
+  0.257,   0.675,   0.930,   0.303,   0.040,   0.141,   0.415,  28.608,   0.158
+instant-ngp_test_quad 16
+     d1,      d2,      d3,  AbsRel,   SqRel,    RMSE, RMSElog,   SILog,   log10
+  0.294,   0.723,   0.930,   0.286,   0.037,   0.136,   0.403,  27.939,   0.150
+
+```
+
+# Depth Generation from NeRF
+
+Use the `./scripts/generate_depth.sh` script to generate depth from a trained NeRF. Following are the inputs:
+
+1. Root folder
+2. base.msgpack
+3. transforms.json
+4. Output directory
+
+
 # Instant Neural Graphics Primitives ![](https://github.com/NVlabs/instant-ngp/workflows/CI/badge.svg)
 
 <img src="docs/assets_readme/fox.gif" height="342"/> <img src="docs/assets_readme/robot5.gif" height="342"/>

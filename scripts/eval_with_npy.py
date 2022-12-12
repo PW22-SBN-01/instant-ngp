@@ -79,8 +79,6 @@ def test():
 
     num_test_samples = len(pred_filenames)
 
-    
-
     k_raw = KittiRaw(
         kitti_raw_base_path=args.kitti_raw_base_path,
         date_folder=args.date_folder,
@@ -96,18 +94,7 @@ def test():
     pred_depths = [depth_map_pred, ]
     gt_depths = [depth_map_gt]
 
-    
-    print('Raw png files reading done')
-    print('Evaluating {} files'.format(len(pred_depths)))
-
-    
-    print('GT files reading done')
-    print('{} GT files missing'.format(len(missing_ids)))
-
-    print('Computing errors')
     eval(pred_depths)
-
-    print('Done.')
 
 
 def eval(pred_depths):
