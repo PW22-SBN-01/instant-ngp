@@ -103,6 +103,7 @@ if __name__ == "__main__":
 		network = os.path.join(configs_dir, network)
 
 	testbed = ngp.Testbed(mode)
+	testbed.render_mode = ngp.Depth
 	testbed.nerf.sharpen = float(args.sharpen)
 	testbed.exposure = args.exposure
 	if mode == ngp.TestbedMode.Sdf:
@@ -345,10 +346,14 @@ if __name__ == "__main__":
 		if "tmp" in os.listdir():
 			shutil.rmtree("tmp")
 		os.makedirs("tmp")
+		os.makedirs("tmp_np", exist_ok=True)
 
 		for i in tqdm(list(range(min(n_frames, n_frames+1))), unit="frames", desc=f"Rendering video"):
 			testbed.camera_smoothing = args.video_camera_smoothing
 			frame = testbed.render(resolution[0], resolution[1], args.video_spp, True, float(i)/n_frames, float(i + 1)/n_frames, args.video_fps, shutter_fraction=0.5)
+			frame_with_exposure = np.clip(frame * 2**args.exposure, 0.0, 1.0)
+			np.save(f"tmp_np/{i:04d}.npy", frame)
+			np.save(f"tmp_np/{i:04d}_e.npy", frame_with_exposure)
 			write_image(f"tmp/{i:04d}.jpg", np.clip(frame * 2**args.exposure, 0.0, 1.0), quality=100)
 
 		os.system(f"ffmpeg -y -framerate {args.video_fps} -i tmp/%04d.jpg -c:v libx264 -pix_fmt yuv420p {args.video_output}")
