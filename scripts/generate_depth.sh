@@ -1,4 +1,3 @@
-
 for experimetn_name in "instant-ngp_test_mono" "instant-ngp_test_stereo" "instant-ngp_test_quad"
 do
     for aabb_scale in "2" "4" "8" "16"
